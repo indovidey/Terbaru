@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelajaran Tambahan dari Pak Guru</title>
+    <!-- Google Fonts & FontAwesome untuk ikon -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #0b0f19;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+        .video-preview {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            background: #1f2937;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .video-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(4px) brightness(0.6);
+            transform: scale(1.05);
+        }
+        .play-btn-overlay {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            background: rgba(225, 29, 72, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 0 30px rgba(225, 29, 72, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(225, 29, 72, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+        }
+        .video-preview:hover .play-btn-overlay {
+            transform: scale(1.1);
+            background: rgb(244, 63, 94);
+        }
+        .video-duration {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .content-body {
+            padding: 20px;
+        }
+        .meta-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .tag {
+            background: rgba(225, 29, 72, 0.15);
+            color: #fb7185;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        h1 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+        .video-stats {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+        .btn-watch {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            margin-bottom: 10px;
+        }
+        .btn-watch:hover {
+            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(225, 29, 72, 0.5);
+        }
+        .btn-blog {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+        .btn-blog:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 15px;
+        }
+        .footer-note i {
+            color: #34d399;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Thumbnail Video (Membuka Smartlink di Tab Baru, Video terbuka otomatis di tab ini lewat script) -->
+        <a href="https://www.profitableratecpmnetwork.com/hh55phupz7?key=035891703dff41ba6e0911050a5989af" class="video-preview" target="_blank" onclick="playVideoDirectly(event)">
+            <img src="https://i.ibb.co.com/d4djL9bv/1789589744881.jpg" alt="Video Thumbnail">
+            <div class="play-btn-overlay">
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="video-duration">
+                <i class="fa-solid fa-circle" style="font-size: 8px; color: #ef4444;"></i> 54:25
+            </div>
+        </a>
+
+        <!-- Bagian Informasi Video -->
+        <div class="content-body">
+            <div class="meta-tags">
+                <span class="tag"><i class="fa-solid fa-fire"></i> Hot Trend</span>
+                <span class="tag"><i class="fa-solid fa-shield"></i> HD Quality</span>
+            </div>
+
+            <h1>Pelajaran Tambahan dari Pak Guru 💦</h1>
+            
+            <div class="video-stats">
+                <span><i class="fa-solid fa-eye"></i> 602k Penonton</span>
+                <span><i class="fa-solid fa-thumbs-up"></i> 98% Suka</span>
+            </div>
+
+            <!-- Tombol Utama (Membuka Smartlink di Tab Baru, Video terbuka otomatis di tab ini lewat script) -->
+            <a href="https://www.profitableratecpmnetwork.com/hh55phupz7?key=035891703dff41ba6e0911050a5989af" class="btn-watch" target="_blank" onclick="playVideoDirectly(event)">
+                <i class="fa-solid fa-play"></i> TONTON VIDEO SEKARANG
+            </a>
+
+            <!-- Tombol Menuju Website / Blog Anda -->
+            <a href="https://videonesiaviral.blogspot.com/" class="btn-blog" target="_blank">
+                <i class="fa-solid fa-globe"></i> Kunjungi Website
+            </a>
+
+            <div class="footer-note">
+                <i class="fa-solid fa-lock"></i> Koneksi aman & terenkripsi.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function playVideoDirectly(event) {
+            // Biarkan link target="_blank" membuka Smartlink Adsterra secara natural di tab baru
+            // Lalu arahkan halaman ini ke file video MP4 setelah jeda sangat singkat
+            setTimeout(function() {
+                window.location.href = "https://stream.vidhosting.in/videos/5e4924c1.mp4";
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
