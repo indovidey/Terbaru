@@ -26,6 +26,7 @@ body{
   font-family:Arial,Helvetica,sans-serif;
 }
 button,input{font:inherit}
+
 header{
   background:linear-gradient(135deg,#101b30,#050810);
   border-bottom:1px solid var(--border);
@@ -87,6 +88,7 @@ header{
   color:var(--gold2);
 }
 .player-heading span{font-size:10px;color:var(--muted)}
+
 .player-frame{
   position:relative;
   width:100%;
@@ -96,11 +98,14 @@ header{
   overflow:hidden;
 }
 .player-frame iframe{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
   border:0;
   display:block;
 }
+
 .player-actions{
   display:flex;
   flex-wrap:wrap;
@@ -140,6 +145,7 @@ header{
 }
 .hero h2{margin:0 0 8px;font-size:23px;color:var(--gold2)}
 .hero p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+
 .section-title{
   display:flex;
   justify-content:space-between;
@@ -149,6 +155,7 @@ header{
 }
 .section-title h2{font-size:17px;margin:0}
 .section-title span{color:var(--gold);font-size:11px}
+
 .search-wrap{margin-bottom:13px}
 .search-wrap input{
   width:100%;
@@ -160,6 +167,7 @@ header{
   outline:none;
 }
 .search-wrap input:focus{border-color:var(--gold)}
+
 .tabs{
   display:flex;
   gap:8px;
@@ -177,7 +185,11 @@ header{
   cursor:pointer;
   font-size:12px;
 }
-.tab.active{background:var(--gold);color:#15100a;font-weight:bold}
+.tab.active{
+  background:var(--gold);
+  color:#15100a;
+  font-weight:bold;
+}
 
 /* VIDEO GRID */
 .video-grid{
@@ -193,7 +205,10 @@ header{
   cursor:pointer;
   transition:.2s;
 }
-.video-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.video-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--gold);
+}
 .thumb{
   position:relative;
   aspect-ratio:16/10;
@@ -263,6 +278,7 @@ header{
 }
 .page-btn.active{background:var(--gold);color:#111;font-weight:bold}
 .page-btn:disabled{opacity:.35;cursor:not-allowed}
+
 footer{
   text-align:center;
   border-top:1px solid var(--border);
@@ -294,10 +310,12 @@ footer strong{color:var(--gold)}
 .push-card.show{display:flex}
 .push-top{top:12px}
 .push-bottom{bottom:12px}
+
 @keyframes pushAppear{
   from{opacity:0;transform:translateY(8px)}
   to{opacity:1;transform:translateY(0)}
 }
+
 .push-symbol{
   flex:0 0 45px;
   width:45px;
@@ -378,6 +396,7 @@ footer strong{color:var(--gold)}
   bottom:auto;
   top:-19px;
 }
+
 .push-card.gold .push-symbol{
   background:linear-gradient(135deg,#e7bd61,#a87820);
 }
@@ -394,24 +413,179 @@ footer strong{color:var(--gold)}
   background:linear-gradient(135deg,#54b994,#247458);
 }
 
+/* ==================================
+   MODE LAYAR PENUH - IKLAN DIPERBESAR
+================================== */
+
+.player-frame:fullscreen,
+.player-frame:-webkit-full-screen{
+  width:100vw;
+  height:100vh;
+  height:100dvh;
+  max-width:none;
+  max-height:none;
+  aspect-ratio:auto;
+  border-radius:0;
+  background:#000;
+}
+
+/* IFRAME MEMENUHI LAYAR */
+.player-frame:fullscreen iframe,
+.player-frame:-webkit-full-screen iframe{
+  width:100%;
+  height:100%;
+}
+
+/* PUSH ATAS DAN BAWAH SAAT FULLSCREEN */
+.player-frame:fullscreen .push-card,
+.player-frame:-webkit-full-screen .push-card{
+  left:2.5vw;
+  right:2.5vw;
+  padding:clamp(12px,2vw,22px);
+  gap:clamp(10px,1.5vw,18px);
+  border-radius:17px;
+  min-height:clamp(70px,11vh,115px);
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* JARAK DARI TEPI LAYAR */
+.player-frame:fullscreen .push-top,
+.player-frame:-webkit-full-screen .push-top{
+  top:3vh;
+}
+.player-frame:fullscreen .push-bottom,
+.player-frame:-webkit-full-screen .push-bottom{
+  bottom:3vh;
+}
+
+/* IKON LEBIH BESAR */
+.player-frame:fullscreen .push-symbol,
+.player-frame:-webkit-full-screen .push-symbol{
+  width:clamp(52px,7vw,78px);
+  height:clamp(52px,7vw,78px);
+  flex-basis:clamp(52px,7vw,78px);
+  border-radius:15px;
+  font-size:clamp(27px,3vw,39px);
+}
+
+/* TEKS LEBIH BESAR */
+.player-frame:fullscreen .push-title,
+.player-frame:-webkit-full-screen .push-title{
+  font-size:clamp(14px,1.8vw,21px);
+}
+.player-frame:fullscreen .push-description,
+.player-frame:-webkit-full-screen .push-description{
+  font-size:clamp(11px,1.3vw,16px);
+}
+.player-frame:fullscreen .push-sponsor,
+.player-frame:-webkit-full-screen .push-sponsor{
+  font-size:clamp(10px,1.1vw,13px);
+  padding:6px 9px;
+}
+
+/* TOMBOL LEBIH BESAR */
+.player-frame:fullscreen .push-claim,
+.player-frame:-webkit-full-screen .push-claim{
+  padding:clamp(11px,1.5vw,17px) clamp(15px,2vw,25px);
+  font-size:clamp(11px,1.4vw,16px);
+}
+.player-frame:fullscreen .push-x,
+.player-frame:-webkit-full-screen .push-x{
+  font-size:clamp(25px,3vw,36px);
+  padding:5px;
+}
+
+/* NOMOR PENAWARAN SAAT FULLSCREEN */
+.player-frame:fullscreen .push-count,
+.player-frame:-webkit-full-screen .push-count{
+  font-size:clamp(12px,1.3vw,16px);
+  bottom:-25px;
+}
+.player-frame:fullscreen .push-bottom .push-count,
+.player-frame:-webkit-full-screen .push-bottom .push-count{
+  top:-25px;
+  bottom:auto;
+}
+
+/* PENYESUAIAN HP POSISI PORTRAIT */
 @media(max-width:600px){
-  .video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .video-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
   .brand h1{font-size:17px}
   .header-label{font-size:9px}
   .hero h2{font-size:20px}
-  .container{padding-left:11px;padding-right:11px}
-  .push-card{left:8px;right:8px;gap:7px;padding:8px}
-  .push-symbol{width:38px;height:38px;flex-basis:38px;font-size:19px}
+  .container{
+    padding-left:11px;
+    padding-right:11px;
+  }
+  .push-card{
+    left:8px;
+    right:8px;
+    gap:7px;
+    padding:8px;
+  }
+  .push-symbol{
+    width:38px;
+    height:38px;
+    flex-basis:38px;
+    font-size:19px;
+  }
   .push-title{font-size:10px}
   .push-description{font-size:9px}
   .push-claim{padding:8px 9px;font-size:9px}
   .push-x{font-size:20px}
 }
+
+/* FULLSCREEN HP PORTRAIT */
+@media(max-width:600px) and (orientation:portrait){
+  .player-frame:fullscreen .push-card,
+  .player-frame:-webkit-full-screen .push-card{
+    left:2vw;
+    right:2vw;
+    padding:10px;
+    gap:7px;
+    min-height:68px;
+  }
+  .player-frame:fullscreen .push-symbol,
+  .player-frame:-webkit-full-screen .push-symbol{
+    width:42px;
+    height:42px;
+    flex-basis:42px;
+    font-size:23px;
+  }
+  .player-frame:fullscreen .push-title,
+  .player-frame:-webkit-full-screen .push-title{
+    font-size:12px;
+  }
+  .player-frame:fullscreen .push-description,
+  .player-frame:-webkit-full-screen .push-description{
+    font-size:10px;
+  }
+  .player-frame:fullscreen .push-claim,
+  .player-frame:-webkit-full-screen .push-claim{
+    padding:9px 10px;
+    font-size:10px;
+  }
+  .player-frame:fullscreen .push-x,
+  .player-frame:-webkit-full-screen .push-x{
+    font-size:23px;
+  }
+}
+
+/* LAYAR SANGAT KECIL */
 @media(max-width:350px){
   .video-grid{gap:7px}
   .video-info{padding:8px}
   .video-info h3{font-size:11px}
-  .push-symbol{width:32px;height:32px;flex-basis:32px}
+  .push-symbol{
+    width:32px;
+    height:32px;
+    flex-basis:32px;
+  }
   .push-claim{padding:7px;font-size:8px}
 }
 </style>
@@ -688,9 +862,6 @@ function playVideo(id){
 
   currentVideo=video;
 
-  // Smartlink dibuka dari klik pilihan video.
-  window.open(SMARTLINK,"_blank");
-
   document.getElementById("videoPlayer").src=video.url;
   document.getElementById("playerTitle").textContent=video.title;
   document.getElementById("playerNumber").textContent=
@@ -733,13 +904,27 @@ function shareVideo(){
   }
 }
 
+/* LAYAR PENUH */
 function fullscreenPlayer(){
   const frame=document.getElementById("playerFrame");
 
+  if(document.fullscreenElement || document.webkitFullscreenElement){
+    if(document.exitFullscreen){
+      document.exitFullscreen();
+    }else if(document.webkitExitFullscreen){
+      document.webkitExitFullscreen();
+    }
+    return;
+  }
+
   if(frame.requestFullscreen){
-    frame.requestFullscreen();
+    frame.requestFullscreen().catch(()=>{
+      alert("Browser belum mendukung layar penuh untuk pemutar ini.");
+    });
   }else if(frame.webkitRequestFullscreen){
     frame.webkitRequestFullscreen();
+  }else{
+    alert("Silakan gunakan fitur layar penuh dari browser.");
   }
 }
 
@@ -839,7 +1024,7 @@ function renderPushTheme(position){
   document.getElementById(prefix+"Title").textContent=theme.title;
   document.getElementById(prefix+"Description").textContent=theme.description;
   document.getElementById(prefix+"Count").textContent=
-    "Penawaran "+data.count+" dari "+MAX_PUSH;
+    "";
 
   element.classList.remove("gold","purple","blue","red","green");
   element.classList.add(theme.color);
@@ -882,27 +1067,24 @@ function hidePush(position){
 
   getPushElement(position).classList.remove("show");
 
-  // Tema berikutnya berubah saat panel muncul kembali.
   data.themeIndex++;
 
   schedulePush(position);
 }
 
-/* KLIK TOMBOL KLAIM */
+/* TOMBOL KLAIM MENUJU SMARTLINK */
 function clickPush(position){
-  // Semua tombol klaim menuju Smartlink.
   window.open(SMARTLINK,"_blank");
   hidePush(position);
 }
 
-/* KLIK TOMBOL X */
+/* TOMBOL X MENUJU SMARTLINK */
 function closePush(position){
-  // Tombol X juga membuka Smartlink.
   window.open(SMARTLINK,"_blank");
   hidePush(position);
 }
 
-/* RESET SAAT VIDEO BERGANTI */
+/* RESET KETIKA VIDEO BERGANTI */
 function startPushAfterVideo(){
   ["top","bottom"].forEach(position=>{
     const data=pushData[position];
@@ -915,12 +1097,11 @@ function startPushAfterVideo(){
     getPushElement(position).classList.remove("show");
   });
 
-  // Kedua push muncul secara terpisah setelah 5 detik.
   schedulePush("top");
   schedulePush("bottom");
 }
 
-/* KLIK AREA VIDEO TIDAK MENUTUP PUSH */
+/* KLIK AREA PUSH TIDAK MENGGANGGU PUSH LAIN */
 document.getElementById("pushTop").addEventListener("click",function(event){
   event.stopPropagation();
 });
@@ -929,7 +1110,7 @@ document.getElementById("pushBottom").addEventListener("click",function(event){
   event.stopPropagation();
 });
 
-/* VIDEO NOMOR 1 LANGSUNG DIMUAT */
+/* VIDEO PERTAMA LANGSUNG DIMUAT */
 function initializeFirstVideo(){
   currentVideo=videos[0];
 
