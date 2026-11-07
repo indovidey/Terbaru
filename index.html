@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -26,7 +25,6 @@ body{
   font-family:Arial,Helvetica,sans-serif;
 }
 button,input{font:inherit}
-
 header{
   background:linear-gradient(135deg,#101b30,#050810);
   border-bottom:1px solid var(--border);
@@ -66,7 +64,7 @@ header{
   padding:18px 14px 35px;
 }
 
-/* PLAYER */
+/* PLAYER DI ATAS */
 .player-section{
   background:var(--panel);
   border:1px solid var(--border);
@@ -88,7 +86,6 @@ header{
   color:var(--gold2);
 }
 .player-heading span{font-size:10px;color:var(--muted)}
-
 .player-frame{
   position:relative;
   width:100%;
@@ -98,14 +95,11 @@ header{
   overflow:hidden;
 }
 .player-frame iframe{
-  position:absolute;
-  inset:0;
   width:100%;
   height:100%;
   border:0;
   display:block;
 }
-
 .player-actions{
   display:flex;
   flex-wrap:wrap;
@@ -145,7 +139,6 @@ header{
 }
 .hero h2{margin:0 0 8px;font-size:23px;color:var(--gold2)}
 .hero p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
-
 .section-title{
   display:flex;
   justify-content:space-between;
@@ -155,7 +148,6 @@ header{
 }
 .section-title h2{font-size:17px;margin:0}
 .section-title span{color:var(--gold);font-size:11px}
-
 .search-wrap{margin-bottom:13px}
 .search-wrap input{
   width:100%;
@@ -167,7 +159,6 @@ header{
   outline:none;
 }
 .search-wrap input:focus{border-color:var(--gold)}
-
 .tabs{
   display:flex;
   gap:8px;
@@ -185,11 +176,7 @@ header{
   cursor:pointer;
   font-size:12px;
 }
-.tab.active{
-  background:var(--gold);
-  color:#15100a;
-  font-weight:bold;
-}
+.tab.active{background:var(--gold);color:#15100a;font-weight:bold}
 
 /* VIDEO GRID */
 .video-grid{
@@ -205,10 +192,7 @@ header{
   cursor:pointer;
   transition:.2s;
 }
-.video-card:hover{
-  transform:translateY(-3px);
-  border-color:var(--gold);
-}
+.video-card:hover{transform:translateY(-3px);border-color:var(--gold)}
 .thumb{
   position:relative;
   aspect-ratio:16/10;
@@ -278,7 +262,6 @@ header{
 }
 .page-btn.active{background:var(--gold);color:#111;font-weight:bold}
 .page-btn:disabled{opacity:.35;cursor:not-allowed}
-
 footer{
   text-align:center;
   border-top:1px solid var(--border);
@@ -290,303 +273,92 @@ footer{
 }
 footer strong{color:var(--gold)}
 
-/* DUA IN-PAGE PUSH */
-.push-card{
-  position:absolute;
-  z-index:20;
-  left:12px;
-  right:12px;
+/* POPUP PENAWARAN */
+.push-overlay{
+  position:fixed;
+  inset:0;
+  z-index:99999;
   display:none;
   align-items:center;
-  gap:10px;
-  padding:10px;
-  border-radius:13px;
-  background:#f8f8fa;
-  color:#202536;
-  box-shadow:0 5px 22px rgba(0,0,0,.35);
-  font-family:Arial,sans-serif;
-  animation:pushAppear .35s ease;
+  justify-content:center;
+  padding:18px;
+  background:rgba(0,0,0,.76);
 }
-.push-card.show{display:flex}
-.push-top{top:12px}
-.push-bottom{bottom:12px}
-
-@keyframes pushAppear{
-  from{opacity:0;transform:translateY(8px)}
-  to{opacity:1;transform:translateY(0)}
+.push-overlay.show{display:flex}
+.push-box{
+  width:100%;
+  max-width:360px;
+  position:relative;
+  background:linear-gradient(145deg,#17243a,#090e18);
+  border:1px solid var(--gold);
+  border-radius:17px;
+  padding:25px 20px 20px;
+  text-align:center;
+  box-shadow:0 15px 60px rgba(0,0,0,.7);
 }
-
-.push-symbol{
-  flex:0 0 45px;
-  width:45px;
-  height:45px;
-  border-radius:11px;
-  display:grid;
-  place-items:center;
-  font-size:23px;
-  color:white;
-  background:linear-gradient(135deg,#d6ad55,#8e6829);
-}
-.push-content{
-  flex:1;
-  min-width:0;
-}
-.push-topline{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  margin-bottom:5px;
-  flex-wrap:wrap;
-}
-.push-sponsor{
-  background:#f5e7c4;
-  color:#84601f;
-  padding:4px 6px;
-  border-radius:5px;
-  font-size:9px;
-  font-weight:bold;
-}
-.push-title{
-  font-size:12px;
-  font-weight:bold;
-  line-height:1.3;
-  color:#202536;
-}
-.push-description{
-  color:#697386;
-  font-size:10px;
-  line-height:1.4;
-}
-.push-buttons{
-  display:flex;
-  align-items:center;
-  gap:5px;
-}
-.push-claim{
-  border:0;
-  border-radius:20px;
-  padding:9px 12px;
-  background:#5145d8;
-  color:white;
-  font-weight:bold;
-  font-size:10px;
-  cursor:pointer;
-  white-space:nowrap;
-}
-.push-x{
+.push-close{
+  position:absolute;
+  top:9px;
+  right:12px;
   border:0;
   background:transparent;
-  color:#7b8493;
-  font-size:22px;
-  padding:3px;
+  color:white;
+  font-size:25px;
   cursor:pointer;
 }
-.push-count{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-19px;
-  text-align:center;
-  color:#fff;
-  font-size:10px;
-  text-shadow:0 1px 3px #000;
-  pointer-events:none;
+.push-icon{
+  width:53px;height:53px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  margin:0 auto 13px;
+  background:linear-gradient(135deg,var(--gold2),#9b7025);
+  color:#111;
+  font-size:24px;
 }
-.push-bottom .push-count{
-  bottom:auto;
-  top:-19px;
+.push-box h3{color:var(--gold2);font-size:19px;margin:0 0 9px}
+.push-box p{
+  color:#c2c9d4;
+  font-size:12px;
+  line-height:1.6;
+  margin:0 0 17px;
 }
-
-.push-card.gold .push-symbol{
-  background:linear-gradient(135deg,#e7bd61,#a87820);
-}
-.push-card.purple .push-symbol{
-  background:linear-gradient(135deg,#8d65e8,#4930a6);
-}
-.push-card.blue .push-symbol{
-  background:linear-gradient(135deg,#55a6e8,#24568c);
-}
-.push-card.red .push-symbol{
-  background:linear-gradient(135deg,#e77878,#a82d43);
-}
-.push-card.green .push-symbol{
-  background:linear-gradient(135deg,#54b994,#247458);
-}
-
-/* ==================================
-   MODE LAYAR PENUH - IKLAN DIPERBESAR
-================================== */
-
-.player-frame:fullscreen,
-.player-frame:-webkit-full-screen{
-  width:100vw;
-  height:100vh;
-  height:100dvh;
-  max-width:none;
-  max-height:none;
-  aspect-ratio:auto;
-  border-radius:0;
-  background:#000;
-}
-
-/* IFRAME MEMENUHI LAYAR */
-.player-frame:fullscreen iframe,
-.player-frame:-webkit-full-screen iframe{
+.offer-btn{
   width:100%;
-  height:100%;
+  padding:13px;
+  border:0;
+  border-radius:9px;
+  background:linear-gradient(135deg,var(--gold2),#b48635);
+  color:#15100a;
+  font-weight:bold;
+  cursor:pointer;
+}
+.push-note{
+  display:block;
+  color:#8792a4;
+  font-size:10px;
+  margin-top:12px;
+}
+.push-counter{
+  color:var(--gold);
+  font-size:10px;
+  margin-top:10px;
 }
 
-/* PUSH ATAS DAN BAWAH SAAT FULLSCREEN */
-.player-frame:fullscreen .push-card,
-.player-frame:-webkit-full-screen .push-card{
-  left:2.5vw;
-  right:2.5vw;
-  padding:clamp(12px,2vw,22px);
-  gap:clamp(10px,1.5vw,18px);
-  border-radius:17px;
-  min-height:clamp(70px,11vh,115px);
-  max-width:1200px;
-  margin-left:auto;
-  margin-right:auto;
+@media(max-width:850px){
+  .video-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-
-/* JARAK DARI TEPI LAYAR */
-.player-frame:fullscreen .push-top,
-.player-frame:-webkit-full-screen .push-top{
-  top:3vh;
-}
-.player-frame:fullscreen .push-bottom,
-.player-frame:-webkit-full-screen .push-bottom{
-  bottom:3vh;
-}
-
-/* IKON LEBIH BESAR */
-.player-frame:fullscreen .push-symbol,
-.player-frame:-webkit-full-screen .push-symbol{
-  width:clamp(52px,7vw,78px);
-  height:clamp(52px,7vw,78px);
-  flex-basis:clamp(52px,7vw,78px);
-  border-radius:15px;
-  font-size:clamp(27px,3vw,39px);
-}
-
-/* TEKS LEBIH BESAR */
-.player-frame:fullscreen .push-title,
-.player-frame:-webkit-full-screen .push-title{
-  font-size:clamp(14px,1.8vw,21px);
-}
-.player-frame:fullscreen .push-description,
-.player-frame:-webkit-full-screen .push-description{
-  font-size:clamp(11px,1.3vw,16px);
-}
-.player-frame:fullscreen .push-sponsor,
-.player-frame:-webkit-full-screen .push-sponsor{
-  font-size:clamp(10px,1.1vw,13px);
-  padding:6px 9px;
-}
-
-/* TOMBOL LEBIH BESAR */
-.player-frame:fullscreen .push-claim,
-.player-frame:-webkit-full-screen .push-claim{
-  padding:clamp(11px,1.5vw,17px) clamp(15px,2vw,25px);
-  font-size:clamp(11px,1.4vw,16px);
-}
-.player-frame:fullscreen .push-x,
-.player-frame:-webkit-full-screen .push-x{
-  font-size:clamp(25px,3vw,36px);
-  padding:5px;
-}
-
-/* NOMOR PENAWARAN SAAT FULLSCREEN */
-.player-frame:fullscreen .push-count,
-.player-frame:-webkit-full-screen .push-count{
-  font-size:clamp(12px,1.3vw,16px);
-  bottom:-25px;
-}
-.player-frame:fullscreen .push-bottom .push-count,
-.player-frame:-webkit-full-screen .push-bottom .push-count{
-  top:-25px;
-  bottom:auto;
-}
-
-/* PENYESUAIAN HP POSISI PORTRAIT */
 @media(max-width:600px){
-  .video-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:10px;
-  }
+  .video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .brand h1{font-size:17px}
   .header-label{font-size:9px}
   .hero h2{font-size:20px}
-  .container{
-    padding-left:11px;
-    padding-right:11px;
-  }
-  .push-card{
-    left:8px;
-    right:8px;
-    gap:7px;
-    padding:8px;
-  }
-  .push-symbol{
-    width:38px;
-    height:38px;
-    flex-basis:38px;
-    font-size:19px;
-  }
-  .push-title{font-size:10px}
-  .push-description{font-size:9px}
-  .push-claim{padding:8px 9px;font-size:9px}
-  .push-x{font-size:20px}
+  .container{padding-left:11px;padding-right:11px}
 }
-
-/* FULLSCREEN HP PORTRAIT */
-@media(max-width:600px) and (orientation:portrait){
-  .player-frame:fullscreen .push-card,
-  .player-frame:-webkit-full-screen .push-card{
-    left:2vw;
-    right:2vw;
-    padding:10px;
-    gap:7px;
-    min-height:68px;
-  }
-  .player-frame:fullscreen .push-symbol,
-  .player-frame:-webkit-full-screen .push-symbol{
-    width:42px;
-    height:42px;
-    flex-basis:42px;
-    font-size:23px;
-  }
-  .player-frame:fullscreen .push-title,
-  .player-frame:-webkit-full-screen .push-title{
-    font-size:12px;
-  }
-  .player-frame:fullscreen .push-description,
-  .player-frame:-webkit-full-screen .push-description{
-    font-size:10px;
-  }
-  .player-frame:fullscreen .push-claim,
-  .player-frame:-webkit-full-screen .push-claim{
-    padding:9px 10px;
-    font-size:10px;
-  }
-  .player-frame:fullscreen .push-x,
-  .player-frame:-webkit-full-screen .push-x{
-    font-size:23px;
-  }
-}
-
-/* LAYAR SANGAT KECIL */
 @media(max-width:350px){
   .video-grid{gap:7px}
   .video-info{padding:8px}
   .video-info h3{font-size:11px}
-  .push-symbol{
-    width:32px;
-    height:32px;
-    flex-basis:32px;
-  }
-  .push-claim{padding:7px;font-size:8px}
 }
 </style>
 </head>
@@ -608,60 +380,22 @@ footer strong{color:var(--gold)}
 
 <main class="container">
 
+  <!-- PLAYER SELALU DI ATAS -->
   <section class="player-section" id="playerBox">
     <div class="player-heading">
-      <h2 id="playerTitle">Memuat Video...</h2>
-      <span id="playerNumber">VIDEO 01</span>
+      <h2 id="playerTitle">Pilih Video untuk Diputar</h2>
+      <span id="playerNumber">MAXPLAY PLAYER</span>
     </div>
 
     <div class="player-frame" id="playerFrame">
-
       <iframe
         id="videoPlayer"
         src="about:blank"
         title="MAXPLAY Video Player"
         allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen>
+        allowfullscreen
+        loading="lazy">
       </iframe>
-
-      <!-- PUSH ATAS -->
-      <div class="push-card push-top" id="pushTop">
-        <div class="push-symbol" id="topIcon">🎁</div>
-        <div class="push-content">
-          <div class="push-topline">
-            <span class="push-sponsor">SPONSOR</span>
-            <span class="push-title" id="topTitle">Promo Spesial</span>
-          </div>
-          <div class="push-description" id="topDescription">
-            Temukan penawaran menarik hari ini!
-          </div>
-        </div>
-        <div class="push-buttons">
-          <button class="push-claim" onclick="clickPush('top')">KLAIM</button>
-          <button class="push-x" onclick="closePush('top')" aria-label="Tutup">&times;</button>
-        </div>
-        <div class="push-count" id="topCount"></div>
-      </div>
-
-      <!-- PUSH BAWAH -->
-      <div class="push-card push-bottom" id="pushBottom">
-        <div class="push-symbol" id="bottomIcon">💎</div>
-        <div class="push-content">
-          <div class="push-topline">
-            <span class="push-sponsor">SPONSOR</span>
-            <span class="push-title" id="bottomTitle">Penawaran Menarik</span>
-          </div>
-          <div class="push-description" id="bottomDescription">
-            Lihat penawaran khusus pengunjung!
-          </div>
-        </div>
-        <div class="push-buttons">
-          <button class="push-claim" onclick="clickPush('bottom')">LIHAT</button>
-          <button class="push-x" onclick="closePush('bottom')" aria-label="Tutup">&times;</button>
-        </div>
-        <div class="push-count" id="bottomCount"></div>
-      </div>
-
     </div>
 
     <div class="player-actions">
@@ -670,19 +404,18 @@ footer strong{color:var(--gold)}
       <button class="action-btn primary" onclick="fullscreenPlayer()">⛶ Layar Penuh</button>
     </div>
 
-    <p class="notice">
-      Pemutar video disediakan melalui layanan pihak ketiga. Ketersediaan dan pemutaran video mengikuti layanan penyedia.
+    <p class="notice"
     </p>
   </section>
 
   <section class="hero">
     <h2>Selamat Datang di MAXPLAY</h2>
-    <p> </p>
+    <p></p>
   </section>
 
   <div class="section-title">
     <h2>✦ Koleksi Video</h2>
-    <span id="totalVideos"> </span>
+    <span id="totalVideos">16 VIDEO</span>
   </div>
 
   <div class="search-wrap">
@@ -707,12 +440,23 @@ footer strong{color:var(--gold)}
   © 2026 MAXPLAY STREAM. All Rights Reserved.
 </footer>
 
+<!-- POPUP PENAWARAN -->
+<div class="push-overlay" id="pushOverlay">
+  <div class="push-box">
+    <button class="push-close" onclick="closePush()" aria-label="Tutup">&times;</button>
+    <div class="push-icon">★</div>
+    <h3>Penawaran Spesial</h3>
+    <p>Temukan penawaran menarik dari sponsor kami. Klik tombol di bawah jika ingin melihat penawaran.</p>
+    <button class="offer-btn" onclick="openOffer()">LIHAT PENAWARAN</button>
+    <span class="push-note">Penawaran sponsor • Bisa ditutup kapan saja</span>
+    <div class="push-counter" id="pushCounter"></div>
+  </div>
+</div>
+
 <script>
-/* SMARTLINK ADSTERRA */
 const SMARTLINK =
 "https://www.profitableratecpmnetwork.com/hh55phupz7?key=035891703dff41ba6e0911050a5989af";
 
-/* DAFTAR VIDEO */
 const videos = [
  {id:1,title:"Momen Panas yang Bikin Susah Berpaling",image:"https://i.ibb.co.com/cS2QGnLf/e89771e819d28a1ae0388d2af852d2f9.jpg",url:"https://trbnvideo.live/e/q2Zg5y2K",date:16,trend:16},
  {id:2,title:"Rahasia di Balik Malam yang Panjang",image:"https://i.ibb.co.com/qMDYTsbY/ae5557d0a21d9be9169a2019329f8e5d.jpg",url:"https://trbnvideo.live/e/iS07IqQg",date:15,trend:15},
@@ -732,7 +476,6 @@ const videos = [
  {id:16,title:"Cerita Malam yang Bikin Penasaran",image:"https://i.ibb.co.com/DPBQHxhZ/1793767445024.jpg",url:"https://trbnvideo.live/e/WzJnNaF4",date:1,trend:1}
 ];
 
-/* PENGATURAN GALERI */
 const perPage=4;
 let currentPage=1;
 let currentSort="newest";
@@ -744,7 +487,6 @@ const pagination=document.getElementById("pagination");
 const searchInput=document.getElementById("searchInput");
 const emptyMessage=document.getElementById("emptyMessage");
 
-/* GALERI */
 function getVideos(){
   let result=[...videos];
   const keyword=searchInput.value.trim().toLowerCase();
@@ -855,12 +597,15 @@ document.querySelectorAll(".tab").forEach(tab=>{
   });
 });
 
-/* PEMUTAR VIDEO */
+/* SMARTLINK DAN VIDEO */
 function playVideo(id){
   const video=videos.find(v=>v.id===id);
   if(!video)return;
 
   currentVideo=video;
+
+  // Buka Smartlink dari klik pengunjung.
+  window.open(SMARTLINK,"_blank");
 
   document.getElementById("videoPlayer").src=video.url;
   document.getElementById("playerTitle").textContent=video.title;
@@ -872,6 +617,7 @@ function playVideo(id){
     block:"start"
   });
 
+  // Setiap video baru dimulai dengan jatah 5 popup.
   startPushAfterVideo();
 }
 
@@ -904,226 +650,89 @@ function shareVideo(){
   }
 }
 
-/* LAYAR PENUH */
 function fullscreenPlayer(){
   const frame=document.getElementById("playerFrame");
 
-  if(document.fullscreenElement || document.webkitFullscreenElement){
-    if(document.exitFullscreen){
-      document.exitFullscreen();
-    }else if(document.webkitExitFullscreen){
-      document.webkitExitFullscreen();
-    }
-    return;
-  }
-
   if(frame.requestFullscreen){
-    frame.requestFullscreen().catch(()=>{
-      alert("Browser belum mendukung layar penuh untuk pemutar ini.");
-    });
+    frame.requestFullscreen();
   }else if(frame.webkitRequestFullscreen){
     frame.webkitRequestFullscreen();
-  }else{
-    alert("Silakan gunakan fitur layar penuh dari browser.");
   }
 }
 
-/* VARIASI TEMA PUSH */
-const pushThemes=[
-  {
-    icon:"🎁",
-    title:"Penawaran Spesial Hari Ini",
-    description:"Temukan penawaran menarik untuk pengunjung!",
-    color:"gold",
-    button:"KLAIM"
-  },
-  {
-    icon:"💎",
-    title:"Promo Eksklusif",
-    description:"Lihat berbagai penawaran spesial dari sponsor.",
-    color:"purple",
-    button:"LIHAT"
-  },
-  {
-    icon:"🎉",
-    title:"Ada Kejutan Menarik",
-    description:"Jelajahi penawaran menarik yang tersedia hari ini.",
-    color:"blue",
-    button:"BUKA"
-  },
-  {
-    icon:"⭐",
-    title:"Penawaran Pilihan",
-    description:"Cek promo menarik yang mungkin kamu sukai.",
-    color:"gold",
-    button:"CEK"
-  },
-  {
-    icon:"🏆",
-    title:"Kesempatan Promo",
-    description:"Lihat informasi penawaran dari sponsor kami.",
-    color:"green",
-    button:"LIHAT"
-  },
-  {
-    icon:"🎯",
-    title:"Promo Untuk Pengunjung",
-    description:"Temukan informasi promo terbaru di sini.",
-    color:"red",
-    button:"BUKA"
-  },
-  {
-    icon:"🎊",
-    title:"Kejutan Hari Ini",
-    description:"Ada penawaran menarik yang bisa kamu lihat.",
-    color:"purple",
-    button:"KLAIM"
-  },
-  {
-    icon:"✨",
-    title:"Penawaran Terbaru",
-    description:"Jangan lewatkan informasi promo dari sponsor.",
-    color:"blue",
-    button:"LIHAT"
-  }
-];
+/* POPUP: MAKSIMAL 5 KALI PER VIDEO */
+const pushOverlay=document.getElementById("pushOverlay");
+const pushCounter=document.getElementById("pushCounter");
 
-/* SISTEM DUA PUSH TERPISAH */
-const MAX_PUSH=5;
-const PUSH_DELAY=5000;
+const MAX_POPUPS=5;
+const POPUP_DELAY=5000;
 
-const pushData={
-  top:{
-    count:0,
-    timer:null,
-    visible:false,
-    themeIndex:0
-  },
-  bottom:{
-    count:0,
-    timer:null,
-    visible:false,
-    themeIndex:3
-  }
-};
+let pushTimer=null;
+let videoSelected=false;
+let popupCount=0;
 
-function getPushElement(position){
-  return document.getElementById(
-    position==="top"?"pushTop":"pushBottom"
-  );
+function showPush(){
+  if(!videoSelected)return;
+  if(popupCount>=MAX_POPUPS)return;
+
+  popupCount++;
+
+  pushCounter.textContent=
+    ";
+
+  pushOverlay.classList.add("show");
 }
 
-function renderPushTheme(position){
-  const data=pushData[position];
-  const theme=pushThemes[data.themeIndex%pushThemes.length];
+function schedulePush(){
+  clearTimeout(pushTimer);
 
-  const prefix=position==="top"?"top":"bottom";
-  const element=getPushElement(position);
+  if(!videoSelected)return;
+  if(popupCount>=MAX_POPUPS)return;
 
-  document.getElementById(prefix+"Icon").textContent=theme.icon;
-  document.getElementById(prefix+"Title").textContent=theme.title;
-  document.getElementById(prefix+"Description").textContent=theme.description;
-  document.getElementById(prefix+"Count").textContent=
-    "";
-
-  element.classList.remove("gold","purple","blue","red","green");
-  element.classList.add(theme.color);
-
-  const button=element.querySelector(".push-claim");
-  button.textContent=theme.button;
+  pushTimer=setTimeout(showPush,POPUP_DELAY);
 }
 
-function showPush(position){
-  const data=pushData[position];
-
-  if(data.count>=MAX_PUSH)return;
-  if(data.visible)return;
-
-  data.count++;
-  data.visible=true;
-
-  renderPushTheme(position);
-  getPushElement(position).classList.add("show");
-}
-
-function schedulePush(position){
-  const data=pushData[position];
-
-  clearTimeout(data.timer);
-
-  if(data.count>=MAX_PUSH)return;
-  if(data.visible)return;
-
-  data.timer=setTimeout(()=>{
-    showPush(position);
-  },PUSH_DELAY);
-}
-
-function hidePush(position){
-  const data=pushData[position];
-
-  clearTimeout(data.timer);
-  data.visible=false;
-
-  getPushElement(position).classList.remove("show");
-
-  data.themeIndex++;
-
-  schedulePush(position);
-}
-
-/* TOMBOL KLAIM MENUJU SMARTLINK */
-function clickPush(position){
-  window.open(SMARTLINK,"_blank");
-  hidePush(position);
-}
-
-/* TOMBOL X MENUJU SMARTLINK */
-function closePush(position){
-  window.open(SMARTLINK,"_blank");
-  hidePush(position);
-}
-
-/* RESET KETIKA VIDEO BERGANTI */
 function startPushAfterVideo(){
-  ["top","bottom"].forEach(position=>{
-    const data=pushData[position];
+  clearTimeout(pushTimer);
 
-    clearTimeout(data.timer);
+  // Reset jatah popup saat video dipilih.
+  popupCount=0;
+  videoSelected=true;
 
-    data.count=0;
-    data.visible=false;
+  pushOverlay.classList.remove("show");
 
-    getPushElement(position).classList.remove("show");
-  });
-
-  schedulePush("top");
-  schedulePush("bottom");
+  schedulePush();
 }
 
-/* KLIK AREA PUSH TIDAK MENGGANGGU PUSH LAIN */
-document.getElementById("pushTop").addEventListener("click",function(event){
-  event.stopPropagation();
-});
+/* X SEKARANG JUGA MEMBUKA SMARTLINK */
+function closePush(){
+  // Smartlink dibuka karena pengunjung menekan tombol X.
+  window.open(SMARTLINK,"_blank");
 
-document.getElementById("pushBottom").addEventListener("click",function(event){
-  event.stopPropagation();
-});
+  pushOverlay.classList.remove("show");
 
-/* VIDEO PERTAMA LANGSUNG DIMUAT */
-function initializeFirstVideo(){
-  currentVideo=videos[0];
-
-  document.getElementById("videoPlayer").src=videos[0].url;
-  document.getElementById("playerTitle").textContent=videos[0].title;
-  document.getElementById("playerNumber").textContent="VIDEO 01";
-
-  startPushAfterVideo();
+  // Jadwalkan popup berikutnya jika jatah belum habis.
+  schedulePush();
 }
 
-/* JALANKAN */
+/* TOMBOL LIHAT PENAWARAN */
+function openOffer(){
+  window.open(SMARTLINK,"_blank");
+
+  pushOverlay.classList.remove("show");
+
+  schedulePush();
+}
+
+/* KLIK AREA LUAR POPUP */
+pushOverlay.addEventListener("click",function(event){
+  if(event.target===pushOverlay){
+    pushOverlay.classList.remove("show");
+    schedulePush();
+  }
+});
+
 renderVideos();
-initializeFirstVideo();
 </script>
 
 <!-- POPUNDER ADSTERRA -->
